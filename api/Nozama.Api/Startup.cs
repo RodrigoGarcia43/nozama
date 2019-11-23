@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Nozama.Api.SettingsProviders;
+using Nozama.Api.Providers;
+using Nozama.Core.Providers;
 using Nozama.Persistence.Contexts;
 
 namespace Nozama.Api
@@ -26,14 +27,13 @@ namespace Nozama.Api
 
             // Authentication
 
-            // Create SettingsProvider to access appsettings.{env}.json
-            var settings = Configuration.Get<AppSettings>();
+            // Create JwtAuthProvider to access appsettings.{env}.json
+            var jwtAuth = Configuration.GetSection("JwtAuth").Get<JwtAuthProvider>();
 
-            // Add SettingsProvider to services
-            services.AddSingleton<AppSettings>(settings);
+            // Add JwtAuthProvider to services
+            services.AddSingleton<ISecretKeyProvider>(jwtAuth);
 
             // Add and configure jwt authentication service
-            var key = settings.JwtAuth.KeyBytes;
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -42,7 +42,7 @@ namespace Nozama.Api
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = new SymmetricSecurityKey(jwtAuth.KeyBytes),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
