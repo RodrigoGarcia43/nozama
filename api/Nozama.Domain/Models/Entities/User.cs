@@ -7,8 +7,8 @@ namespace Nozama.Domain.Models.Entities
     {
         public string Id { get; set; }
 
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string CredentialsId { get; set; }
+        public UserCredentials Credentials { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

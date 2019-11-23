@@ -9,13 +9,16 @@ namespace Nozama.Persistence.Configurations.Entities
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.Id).IsRequired();
-            builder.Property(u => u.Username).IsRequired();
+            builder.Property(u => u.CredentialsId).IsRequired();
             builder.Property(u => u.FirstName).IsRequired();
             builder.Property(u => u.LastName).IsRequired();
             builder.Property(u => u.Balance).IsRequired();
 
             builder.HasKey(u => u.Id);
-            builder.HasIndex(u => u.Username);
+
+            builder.HasOne(u => u.Credentials)
+            .WithOne(uc => uc.User)
+            .HasForeignKey<User>(u => u.CredentialsId);
         }
     }
 }
