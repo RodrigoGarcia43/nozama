@@ -29,10 +29,12 @@ namespace Nozama.Api
         {
             app.UseRouting();
 
-            app.UseCors(b => b
-                .AllowAnyOrigin()
+            app.UseCors(b =>
+            {
+                b.AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader();
+            });
 
             app.UseAuthorization();
 
