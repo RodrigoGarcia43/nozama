@@ -4,7 +4,7 @@ using Nozama.Persistence.Configurations.Entities;
 
 namespace Nozama.Persistence.Contexts
 {
-    public class NozamaContext : DbContext
+    public partial class NozamaContext : DbContext
     {
         public NozamaContext(DbContextOptions<NozamaContext> options) : base(options) { }
 
