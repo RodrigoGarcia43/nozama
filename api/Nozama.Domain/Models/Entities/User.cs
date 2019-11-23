@@ -15,6 +15,7 @@ namespace Nozama.Domain.Models.Entities
 
         public long Balance { get; set; }
 
+        public ICollection<Offer> Offers { get; set; }
         public ICollection<Sale> Sales { get; set; }
         public ICollection<Sale> Buys { get; set; }
     }
