@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Nozama.Domain.Models.Aggregates;
+
 namespace Nozama.Domain.Models.Entities
 {
     public class User
@@ -11,5 +14,8 @@ namespace Nozama.Domain.Models.Entities
         public string LastName { get; set; }
 
         public long Balance { get; set; }
+
+        public ICollection<Sale> Sales { get; set; }
+        public ICollection<Sale> Buys { get; set; }
     }
 }
