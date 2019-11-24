@@ -3,12 +3,9 @@ using Nozama.Domain.Models.Aggregates;
 
 namespace Nozama.Domain.Models.Entities
 {
-    public class User
+    public partial class User
     {
         public string Id { get; set; }
-
-        public string CredentialsId { get; set; }
-        public UserCredentials Credentials { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

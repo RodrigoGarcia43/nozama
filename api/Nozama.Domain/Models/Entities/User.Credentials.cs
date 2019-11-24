@@ -1,6 +1,6 @@
-namespace Nozama.Core.Dtos
+namespace Nozama.Domain.Models.Entities
 {
-    public class SignInDto
+    public partial class User
     {
         public string Username { get; set; }
         public string Password { get; set; }
