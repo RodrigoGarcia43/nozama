@@ -31,7 +31,7 @@ namespace Nozama.Api
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
-                app.UseExceptionHandler("api/error");
+                app.UseExceptionHandler("/error");
 
             app.UseRouting();
 

@@ -1,5 +1,6 @@
-using System.Net;
+using System;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ScientificEvents.Api.Controllers
@@ -7,15 +8,14 @@ namespace ScientificEvents.Api.Controllers
     [ApiController]
     public class ErrorController : ControllerBase
     {
-        [Route("error")]
+        [Route("/error")]
         public IActionResult Error()
         {
             var feature = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            var ex = feature.Error;
+            var ex = feature?.Error;
 
             return Problem(
-                detail: ex.Message,
-                statusCode: (int)HttpStatusCode.InternalServerError,
+                detail: ex?.Message,
                 title: "An internal server error has occurred."
             );
         }
