@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nozama.Persistence\Nozama.Persistence.csproj" />
     <ProjectReference Include="..\Nozama.Core\Nozama.Core.csproj" />
+    <ProjectReference Include="..\Nozama.Services\Nozama.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

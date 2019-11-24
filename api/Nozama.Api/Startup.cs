@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Nozama.Api.Providers;
 using Nozama.Core.Providers;
+using Nozama.Core.Services;
 using Nozama.Persistence.Contexts;
+using Nozama.Services;
 
 namespace Nozama.Api
 {
@@ -52,7 +54,7 @@ namespace Nozama.Api
             services.AddDbContext<NozamaContext>(o => o.UseInMemoryDatabase("Nozama"));
 
             // Add other services
-            // ...
+            services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

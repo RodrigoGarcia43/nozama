@@ -9,9 +9,9 @@ namespace Nozama.Api.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationService _service;
+        private readonly IUserAuthenticationService _service;
 
-        public AuthenticationController(IAuthenticationService service)
+        public AuthenticationController(IUserAuthenticationService service)
         {
             _service = service;
         }
