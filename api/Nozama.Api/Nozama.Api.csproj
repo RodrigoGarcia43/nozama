@@ -6,9 +6,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nozama.Persistence\Nozama.Persistence.csproj" />
+    <ProjectReference Include="..\Nozama.Core\Nozama.Core.csproj" />
+    <ProjectReference Include="..\Nozama.Services\Nozama.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
